@@ -1,52 +1,48 @@
-# 🚀 API de Gestão de Clientes - Laboratório de Calibração
+# 🚀 Sistema de Gestão de Clientes - API REST (Spring Boot)
 
-API REST desenvolvida com **Spring Boot** para gerenciamento de clientes e seus dados em um ambiente de laboratório de calibração.
-
-Este projeto foi construído com foco em boas práticas de mercado, organização em camadas e escalabilidade, simulando um cenário real de sistema corporativo.
+API REST desenvolvida com **Spring Boot** para gestão de clientes em um laboratório de calibração, aplicando boas práticas de arquitetura, validação de dados e versionamento de banco.
 
 ---
 
-## 🧩 Problema Resolvido
+## 💡 Por que este projeto é relevante?
 
-Laboratórios de calibração precisam gerenciar:
+Este projeto simula um sistema real utilizado em empresas, abordando:
 
-* Cadastro de clientes
-* Atualizações frequentes de dados
-* Histórico de alterações
-* Integração futura com equipamentos e ordens de serviço
-
-Esta API resolve esse problema com uma estrutura robusta, segura e preparada para crescimento.
+* Organização em camadas (Controller, Repository, DTO)
+* Separação de responsabilidades
+* Persistência com JPA
+* Versionamento de banco com Flyway
+* Boas práticas utilizadas no mercado backend Java
 
 ---
 
-## ⚙️ Tecnologias e Stack
+## 🛠️ Tecnologias Utilizadas
 
 * ☕ Java 17
 * 🚀 Spring Boot
 * 🌐 Spring Web
 * 🗄️ Spring Data JPA
 * 🐬 MySQL
-* 🔄 Flyway (versionamento do banco)
+* 🔄 Flyway
 * ⚡ Lombok
-* 🧪 JUnit (testes básicos)
+* 🧪 JUnit
 
 ---
 
 ## 🏗️ Arquitetura
 
-O projeto segue o padrão de arquitetura em camadas:
+O projeto segue uma arquitetura em camadas:
 
 * **Controller** → Entrada das requisições HTTP
-* **Service (regra de negócio - implícita/organizada)**
 * **Repository** → Acesso ao banco de dados
-* **DTOs** → Controle de entrada/saída de dados
-* **Entities** → Modelagem do banco
+* **DTOs** → Controle de entrada e saída de dados
+* **Entities** → Representação das tabelas no banco
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```id="tree1"
+```
 src/main/java/dina/voll/api/
 ├── cliente/
 │   ├── Cliente.java
@@ -71,10 +67,9 @@ src/main/java/dina/voll/api/
 ## 🔥 Funcionalidades
 
 * ✅ Cadastro de clientes
-* 📋 Listagem paginada de clientes
+* 📋 Listagem de clientes
 * ✏️ Atualização de dados
 * ❌ Exclusão lógica (soft delete com campo `ativo`)
-* 📦 Separação clara entre DTOs e entidades
 * 🛡️ Validação de dados nas requisições
 
 ---
@@ -83,9 +78,9 @@ src/main/java/dina/voll/api/
 
 Gerenciado com **Flyway**, garantindo versionamento e consistência.
 
-Scripts disponíveis:
+Scripts de migração:
 
-```id="sql1"
+```
 V1__create-table-cliente.sql
 V2__alter-table-clientes-add-column-telefone.sql
 V3__alter-table-clientes-add-column-ativo.sql
@@ -93,7 +88,7 @@ V3__alter-table-clientes-add-column-ativo.sql
 
 ---
 
-## 🌐 Endpoints Principais
+## 🌐 Endpoints
 
 | Método | Endpoint       | Descrição         |
 | ------ | -------------- | ----------------- |
@@ -104,68 +99,99 @@ V3__alter-table-clientes-add-column-ativo.sql
 
 ---
 
-## ▶️ Como Executar
+## ▶️ Como Executar o Projeto
 
-### Pré-requisitos
+### 🔹 Pré-requisitos
 
-* Java 17+
+* Java 17 ou superior
 * MySQL
 
-### Passos
+---
 
-```id="run1"
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
+### 🔹 Passos
+
+Clone o repositório:
+
+```
+git clone https://github.com/CarlosEduLopes/api-calibracao.git
+cd api-calibracao
 ```
 
-Configure o banco:
+Configure o banco de dados no arquivo `application.properties`:
 
-```id="run2"
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/seu_banco
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
 ```
 
-Execute:
+Execute o projeto:
 
-```id="run3"
+```
 ./mvnw spring-boot:run
+```
+
+No Windows:
+
+```
+mvnw.cmd spring-boot:run
 ```
 
 ---
 
-## 🧠 Diferenciais do Projeto
+## 🧪 Como testar a API
 
-✔ Uso de **DTOs para desacoplamento**
-✔ Implementação de **exclusão lógica (boa prática real)**
-✔ Versionamento de banco com **Flyway**
-✔ Código organizado e pronto para escalar
-✔ Estrutura próxima de projetos usados em empresas
+Você pode testar os endpoints utilizando:
+
+* Postman
+* Insomnia
+* cURL
+
+Exemplo de endpoints:
+
+```
+POST   /clientes
+GET    /clientes
+PUT    /clientes
+DELETE /clientes/{id}
+```
 
 ---
 
-## 🚀 Próximos Passos (Roadmap)
+## 🏆 Status do Projeto
+
+🚧 Em evolução contínua
+
+Melhorias planejadas:
 
 * 🔐 Autenticação com JWT
-* 📊 Logs e monitoramento
-* 📦 Integração com sistema de equipamentos
-* 📱 Integração com app Flutter
-* ☁️ Deploy em cloud (Render / Railway / AWS)
+* 📄 Documentação com Swagger
+* ☁️ Deploy em nuvem
+* 📱 Integração com aplicativo Flutter
+
+---
+
+## 🧠 Diferenciais
+
+✔ Uso de DTOs para desacoplamento
+✔ Exclusão lógica (boa prática de mercado)
+✔ Versionamento de banco com Flyway
+✔ Estrutura pronta para escalar
 
 ---
 
 ## 👨‍💻 Autor
 
-Carlos Lopes
+Desenvolvido por **Carlos Lopes**
 
 ---
 
-## 💼 Sobre o Projeto
+## 💼 Objetivo
 
-Este projeto foi desenvolvido com foco em evolução profissional e prática de desenvolvimento backend com Java e Spring Boot, visando oportunidades como **Desenvolvedor Backend Java**.
+Projeto desenvolvido com foco em evolução profissional e preparação para oportunidades como **Desenvolvedor Backend Java**.
 
 ---
 
-## ⭐ Se este projeto te ajudou ou chamou atenção
+## ⭐ Se este projeto te ajudou
 
 Deixe uma estrela no repositório 😉
